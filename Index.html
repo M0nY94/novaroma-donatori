@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Pack donatori NRP</title>
+  <style>
+    .social-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.social-icons a {
+  color: red;
+  margin: 0 8px;
+  font-size: 1.3rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+    .social-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #000000;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .red-line {
+      width: 100vw;
+      height: 4px;
+      background: red;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .side-text {
+      position: absolute;
+      left: 60px;
+      top: 500px;
+      font-size: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .center-logo {
+      max-width: 200%;
+      height: auto;
+      margin-bottom: 0;
+    }
+
+    .images-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .soldi-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      max-width: 350px;
+      width: 60%;
+      opacity: 0.18;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .soldi-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+      filter: blur(18px);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      margin-top: 30px;
+    }
+
+    .image-row img {
+      max-width: 260px;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+      border: 3px solid rgba(255,0,0,0.4);
+    }
+    .image-row img:hover {
+      transform: scale(1.08);
+      z-index: 2;
+      border-color: rgba(255,0,0,0.7);
+    }
+
+    .image-row + .image-row {
+      margin-top: 60px;
+    }
+
+    .car-label {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      color: #ff4444;
+      font-size: 1.05rem;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 1px;
+      min-height: 1.5em;
+    }
+
+    .car-label-line {
+      width: 70%;
+      height: 2px;
+      background: rgba(255,0,0,0.5);
+      margin: 8px auto 0 auto;
+      border: none;
+      border-radius: 2px;
+    }
+
+    .nova-link, .auto-link {
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nova-link:hover, .auto-link:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff4444;
+    }
+
+    /* Schermate interne */
+    .screen {
+      display: none;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .active {
+      display: flex;
+    }
+    .back-link {
+      margin-top: 20px;
+      color: #ff4444;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .back-link:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff4444;
+    }
+    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: black;   /* stesso colore sfondo */
+  color: rgb(255, 255, 255);                /* colore testo */
+  font-size: 0.9rem;
+  border-top: 3px solid red; /* linea di separazione */
+}§
+
+  </style>
+</head>
+<body>
+
+  <div class="red-line"></div>
+
+  <!-- Schermata HOME -->
+  <div id="home" class="screen active">
+    <div class="side-text">
+      <span class="auto-link">Auto Donatori</span> &gt;
+      
+    </div>
+
+    <img class="center-logo" src="logo.png" alt="Logo Scuderia Parioli">
+
+    <div class="images-wrapper">
+      <div class="soldi-glow"></div>
+      <img class="soldi-bg" src="soldi.png" alt="Soldi">
+
+      <!-- Prima riga -->
+      <div class="image-row">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO1.jfif" alt="Immagine 1">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 1</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 2">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 2</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO3.webp" alt="Immagine 3">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 3</span>
+        </div>
+      </div>
+
+      <!-- Seconda riga -->
+      <div class="image-row">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 4">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 4</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 5">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 5</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 6">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer>
+  <div class="footer-text">
+    Nova Roma RP © 2025 – Tutti i diritti riservati
+  </div>
+  <div class="social-icons">
+    <a href="https://discord.gg/7JtHhy4ctJ" target="_blank">
+      <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://www.instagram.com/novaromaroleplay?igsh=ZngzZGZqNHM1Mmky" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@NovaRomaRP" target="_blank">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- Font Awesome per le icone -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Font Awesome per le icone -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+</html>
+
+
+
+
+
+
