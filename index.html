@@ -180,12 +180,28 @@
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 10px 0;
-  background-color: black;   /* stesso colore sfondo */
-  color: rgb(255, 255, 255);                /* colore testo */
+  padding: 10px 0 0 0;
+  background-color: black;
+  color: rgb(255, 255, 255);
   font-size: 0.9rem;
-  border-top: 3px solid red; /* linea di separazione */
-}§
+  border: none;
+  z-index: 200;
+  overflow: visible;
+}
+.footer-red-line {
+  width: 100vw;
+  height: 3px;
+  background: red;
+  margin: 8px 0 0 0;
+  position: relative;
+  z-index: 201;
+  transition: transform 0.2s;
+}
+.footer-text {
+  position: relative;
+  z-index: 202;
+  transition: transform 0.2s;
+}
 
   </style>
 </head>
@@ -243,13 +259,33 @@
           <span class="car-label">Nome Auto 6</span>
         </div>
       </div>
+
+      <!-- Terza riga -->
+      <div class="image-row">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 7">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 7</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 8">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 8</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="AUTO2.jpg" alt="Immagine 9">
+          <hr class="car-label-line">
+          <span class="car-label">Nome Auto 9</span>
+        </div>
+      </div>
     </div>
   </div>
 
 <footer>
-  <div class="footer-text">
+  <div class="footer-text" id="footerText">
     Nova Roma RP © 2025 – Tutti i diritti riservati
   </div>
+  <div class="footer-red-line" id="footerRedLine"></div>
   <div class="social-icons">
     <a href="https://discord.gg/7JtHhy4ctJ" target="_blank">
       <i class="fab fa-discord"></i>
@@ -261,6 +297,7 @@
       <i class="fab fa-youtube"></i>
     </a>
   </div>
+
 </footer>
 
 <!-- Font Awesome per le icone -->
@@ -268,8 +305,24 @@
 
 <!-- Font Awesome per le icone -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+// Effetto parallax per la scritta e la linea rossa nel footer
+window.addEventListener('scroll', function() {
+  var scrollY = window.scrollY;
+  var footerText = document.getElementById('footerText');
+  var footerRedLine = document.getElementById('footerRedLine');
+  // Muovi la scritta e la linea rossa in basso in base allo scroll (effetto parallax)
+  if (footerText) {
+    footerText.style.transform = 'translateY(' + (-scrollY * 0.2) + 'px)';
+  }
+  if (footerRedLine) {
+    footerRedLine.style.transform = 'translateY(' + (-scrollY * 0.2) + 'px)';
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 
