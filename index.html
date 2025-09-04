@@ -1,222 +1,1380 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  
   <meta charset="UTF-8">
-  <title>Pack donatori NRP</title>
+  <title>Nova Roma RP - Donazioni</title>
   <style>
-    .social-icons {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+    /* --- FIX: "Auto Donatori" centrata sotto il logo --- */
+.side-text{
+  position: static !important;   /* annulla absolute */
+  left: auto !important;
+  top: auto !important;
+  margin: 14px 0 0 0;            /* distanza dal logo */
+  width: 100%;
+  text-align: center;
 }
 
-.social-icons a {
-  color: red;
-  margin: 0 8px;
+.side-text .auto-link{
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 1.3rem;
-  transition: 0.3s;
+  font-weight: bold;
+  letter-spacing: 7px;
+  text-decoration: none;
+  transition: color .2s, text-shadow .2s;
 }
 
-.social-icons a:hover {
-  color: white;
+.side-text .auto-link:hover{
+  color: #fff;
+  text-shadow: 0 0 8px #ffffff;
 }
-    .social-icons {
+    .paypal-logo {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 80px; /* lo mette vicino alle icone social */
+  z-index: 2000;
 }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background-color: #000000;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
 
-    .red-line {
-      width: 100vw;
-      height: 4px;
-      background: red;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-    }
+.paypal-logo img {
+  width: 50px;   /* dimensione logo */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
 
-    .side-text {
-      position: absolute;
-      left: 60px;
-      top: 500px;
-      font-size: 1rem;
-      font-family: 'Courier New', Courier, monospace;
-    }
+.paypal-logo img:hover {
+  transform: scale(1.1);
+}
+    /* Reset e body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: rgb(255, 0, 0);
+  font-family: Arial, sans-serif;
+}
 
-    .center-logo {
-      max-width: 200%;
-      height: auto;
-      margin-bottom: 0;
-    }
+/* Barra rossa in alto */
+.red-line {
+  width: 100vw;
+  height: 4px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 
-    .images-wrapper {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 40px;
-    }
+<img class="center-logo" src="logo.png" alt="Logo Scuderia Parioli">
 
-    .soldi-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      max-width: 350px;
-      width: 60%;
-      opacity: 0.18;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-    }
+<div class="side-text">
+  Auto Donatori
+</div>
+}
 
-    .soldi-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
-      filter: blur(18px);
-      z-index: 0;
-      pointer-events: none;
-      user-select: none;
-    }
+.side-text:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}}
 
-    .image-row {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-      margin-top: 30px;
-    }
+.nova-link, .auto-link {
+  color: #ff4444;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nova-link:hover, .auto-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
 
-    .image-row img {
-      max-width: 260px;
-      height: auto;
-      border-radius: 8px;
-      transition: transform 0.25s cubic-bezier(.4,2,.6,1);
-      border: 3px solid rgba(255,0,0,0.4);
-    }
-    .image-row img:hover {
-      transform: scale(1.08);
-      z-index: 2;
-      border-color: rgba(255,0,0,0.7);
-    }
+/* Logo */
+.center-logo {
+  max-width: 200%;
+  height: auto;
+  margin-bottom: 0;
+}
 
-    .image-row + .image-row {
-      margin-top: 60px;
-    }
+/* Wrapper immagini */
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
 
-    .car-label {
-      display: block;
-      margin-top: 12px;
-      text-align: center;
-      color: #ff4444;
-      font-size: 1.05rem;
-      font-family: 'Courier New', Courier, monospace;
-      letter-spacing: 1px;
-      min-height: 1.5em;
-    }
+.soldi-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-width: 350px;
+  width: 60%;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
 
-    .car-label-line {
-      width: 70%;
-      height: 2px;
-      background: rgba(255,0,0,0.5);
-      margin: 8px auto 0 auto;
-      border: none;
-      border-radius: 2px;
-    }
+.soldi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
 
-    .nova-link, .auto-link {
-      color: #ff4444;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .nova-link:hover, .auto-link:hover {
-      color: #fff;
-      text-shadow: 0 0 8px #ff4444;
-    }
+/* Righe immagini auto */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}
+.image-row img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  border: 3px solid rgba(255,0,0,0.4);
+}
+.image-row img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  border-color: rgba(255,0,0,0.7);
+}
+.image-row + .image-row {
+  margin-top: 60px;
+}
 
-    /* Schermate interne */
-    .screen {
-      display: none;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
-    .active {
-      display: flex;
-    }
-    .back-link {
-      margin-top: 20px;
-      color: #ff4444;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .back-link:hover {
-      color: #fff;
-      text-shadow: 0 0 8px #ff4444;
-    }
-    footer {
+/* Etichette auto */
+.car-label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #ff4444;
+  font-size: 1.05rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+}
+.car-label-line {
+  width: 70%;
+  height: 2px;
+  background: rgba(255,0,0,0.5);
+  margin: 8px auto 0 auto;
+  border: none;
+  border-radius: 2px;
+}
+
+/* Schermate interne */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.active {
+  display: flex;
+}
+.back-link {
+  margin-top: 20px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Footer */
+footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 10px 0 0 0;
   background-color: black;
   color: rgb(255, 255, 255);
   font-size: 0.9rem;
   border: none;
-  z-index: 200;
-  overflow: visible;
-}
-.footer-red-line {
-  width: 100vw;
-  height: 3px;
-  background: red;
-  margin: 8px 0 0 0;
-  position: relative;
-  z-index: 201;
-  transition: transform 0.2s;
+  z-index: 9999;
+  padding: 5px 0;
 }
 .footer-text {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
   position: relative;
-  z-index: 202;
-  transition: transform 0.2s;
+  z-index: 2;
+}
+.footer-red-line {
+  width: 100%;
+  height: 3px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
+/* Social */
+.social-icons {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  z-index: 2;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.social-icons a:hover {
+  color: #ff4444;
+}
+
+/* Pacchetto Donatore */
+.donor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 120px;
+  width: 100%;
+}
+.donor-title {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+.donor-title h2 {
+  margin-left: 60px;
+}
+.donor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px; /* aggiunge spazio sotto le ultime immagini */
+}
+.donor-images img {
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: transform 0.25s ease;
+}
+.donor-images img:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.donor-label-top, .donor-label-bottom {
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  margin: 6px 0;
+  text-align: center;
+  min-height: 1.2em;
+  letter-spacing: 1px;
+}
+.donor-label-top {
+  font-weight: bold;
+}
+.donor-label-bottom {
+  font-style: italic;
+}
+    /* Reset e body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra rossa in alto */
+.red-line {
+  width: 100vw;
+  height: 4px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.side-text {
+  margin-top: 20px;            /* distanza dal logo */
+  text-align: center;          /* centrato */
+  font-size: 1.3rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: #ff4444;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.side-text:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+.nova-link, .auto-link {
+  color: #ff4444;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nova-link:hover, .auto-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Logo */
+.center-logo {
+  max-width: 200%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+/* Wrapper immagini */
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.soldi-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-width: 350px;
+  width: 60%;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.soldi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Righe immagini auto */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}
+.image-row img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  border: 3px solid rgba(255,0,0,0.4);
+}
+.image-row img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  border-color: rgba(255,0,0,0.7);
+}
+.image-row + .image-row {
+  margin-top: 60px;
+}
+
+/* Etichette auto */
+.car-label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #ff4444;
+  font-size: 1.05rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+}
+.car-label-line {
+  width: 70%;
+  height: 2px;
+  background: rgba(255,0,0,0.5);
+  margin: 8px auto 0 auto;
+  border: none;
+  border-radius: 2px;
+}
+
+/* Schermate interne */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.active {
+  display: flex;
+}
+.back-link {
+  margin-top: 20px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  border: none;
+  z-index: 9999;
+  padding: 5px 0;
+}
+.footer-text {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+}
+.footer-red-line {
+  width: 100%;
+  height: 3px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Social */
+.social-icons {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  z-index: 2;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.social-icons a:hover {
+  color: #ff4444;
+}
+
+/* Pacchetto Donatore */
+.donor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 120px;
+  width: 100%;
+}
+.donor-title {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+.donor-title h2 {
+  margin-left: 60px;
+}
+.donor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px; /* aggiunge spazio sotto le ultime immagini */
+}
+.donor-images img {
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: transform 0.25s ease;
+}
+.donor-images img:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.donor-label-top, .donor-label-bottom {
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  margin: 6px 0;
+  text-align: center;
+  min-height: 1.2em;
+  letter-spacing: 1px;
+}
+.donor-label-top {
+  font-weight: bold;
+}
+.donor-label-bottom {
+  font-style: italic;
+}
+    /* Reset e body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra rossa in alto */
+.red-line {
+  width: 100vw;
+  height: 4px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* Testo laterale (Auto Donatori) */
+.side-text {
+  position: absolute;
+  left: 60px;
+  top: 500px;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.nova-link, .auto-link {
+  color: #ff4444;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nova-link:hover, .auto-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Logo */
+.center-logo {
+  max-width: 200%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+/* Wrapper immagini */
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.soldi-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-width: 350px;
+  width: 60%;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.soldi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Righe immagini auto */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}
+.image-row img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  border: 3px solid rgba(255,0,0,0.4);
+}
+.image-row img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  border-color: rgba(255,0,0,0.7);
+}
+.image-row + .image-row {
+  margin-top: 60px;
+}
+
+/* Etichette auto */
+.car-label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #ff4444;
+  font-size: 1.05rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+}
+.car-label-line {
+  width: 70%;
+  height: 2px;
+  background: rgba(255,0,0,0.5);
+  margin: 8px auto 0 auto;
+  border: none;
+  border-radius: 2px;
+}
+
+/* Schermate interne */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.active {
+  display: flex;
+}
+.back-link {
+  margin-top: 20px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  border: none;
+  z-index: 9999;
+  padding: 5px 0;
+}
+.footer-text {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+}
+.footer-red-line {
+  width: 100%;
+  height: 3px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Social */
+.social-icons {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  z-index: 2;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.social-icons a:hover {
+  color: #ff4444;
+}
+
+/* Pacchetto Donatore */
+.donor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 120px;
+  width: 100%;
+}
+.donor-title {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+.donor-title h2 {
+  margin-left: 60px;
+}
+.donor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px; /* aggiunge spazio sotto le ultime immagini */
+}
+.donor-images img {
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: transform 0.25s ease;
+}
+.donor-images img:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.donor-label-top, .donor-label-bottom {
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  margin: 6px 0;
+  text-align: center;
+  min-height: 1.2em;
+  letter-spacing: 1px;
+}
+.donor-label-top {
+  font-weight: bold;
+}
+.donor-label-bottom {
+  font-style: italic;
+}
+    /* Reset e body */
+body {
+  
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra rossa in alto */
+.red-line {
+  width: 100vw;
+  height: 4px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* Testo laterale (Auto Donatori) */
+.side-text {
+  position: absolute;
+  left: 60px;
+  top: 500px;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.nova-link, .auto-link {
+  color: #ff4444;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nova-link:hover, .auto-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Logo */
+.center-logo {
+  max-width: 200%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+/* Wrapper immagini */
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.soldi-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-width: 350px;
+  width: 60%;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.soldi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Righe immagini auto */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}
+.image-row img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  border: 3px solid rgba(255,0,0,0.4);
+}
+.image-row img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  border-color: rgba(255,0,0,0.7);
+}
+.image-row + .image-row {
+  margin-top: 60px;
+}
+
+/* Etichette auto */
+.car-label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #ff4444;
+  font-size: 1.05rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+}
+.car-label-line {
+  width: 70%;
+  height: 2px;
+  background: rgba(255,0,0,0.5);
+  margin: 8px auto 0 auto;
+  border: none;
+  border-radius: 2px;
+}
+
+/* Schermate interne */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.active {
+  display: flex;
+}
+.back-link {
+  margin-top: 20px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  border: none;
+  z-index: 9999;
+  padding: 5px 0;
+}
+.footer-text {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+}
+.footer-red-line {
+  width: 100%;
+  height: 3px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Social */
+.social-icons {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  z-index: 2;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.social-icons a:hover {
+  color: #ff4444;
+}
+
+/* Pacchetto Donatore */
+.donor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 120px;
+  width: 100%;
+}
+.donor-title {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+.donor-title h2 {
+  margin-left: 60px;
+}
+.donor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px; /* aggiunge spazio sotto le ultime immagini */
+}
+.donor-images img {
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: transform 0.25s ease;
+}
+.donor-images img:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.donor-label-top, .donor-label-bottom {
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  margin: 6px 0;
+  text-align: center;
+  min-height: 1.2em;
+  letter-spacing: 1px;
+}
+.donor-label-top {
+  font-weight: bold;
+}
+.donor-label-bottom {
+  font-style: italic;
+}
+    /* Reset e body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra rossa in alto */
+.red-line {
+  width: 100vw;
+  height: 4px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* Testo laterale (Auto Donatori) */
+.side-text {
+  position: absolute;
+  left: 60px;
+  top: 500px;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.nova-link, .auto-link {
+  color: #ff4444;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nova-link:hover, .auto-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Logo */
+.center-logo {
+  max-width: 200%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+/* Wrapper immagini */
+.images-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.soldi-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-width: 350px;
+  width: 60%;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.soldi-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 70%, transparent 100%);
+  filter: blur(18px);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Righe immagini auto */
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+}
+.image-row img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+  border: 3px solid rgba(255,0,0,0.4);
+}
+.image-row img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  border-color: rgba(255,0,0,0.7);
+}
+.image-row + .image-row {
+  margin-top: 60px;
+}
+
+/* Etichette auto */
+.car-label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #ff4444;
+  font-size: 1.05rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  min-height: 1.5em;
+}
+.car-label-line {
+  width: 70%;
+  height: 2px;
+  background: rgba(255,0,0,0.5);
+  margin: 8px auto 0 auto;
+  border: none;
+  border-radius: 2px;
+}
+
+/* Schermate interne */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.active {
+  display: flex;
+}
+.back-link {
+  margin-top: 20px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  border: none;
+  z-index: 9999;
+  padding: 5px 0;
+}
+.footer-text {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 2;
+}
+.footer-red-line {
+  width: 100%;
+  height: 3px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Social */
+.social-icons {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  z-index: 2;
+}
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.social-icons a:hover {
+  color: #ff4444;
+}
+
+/* Pacchetto Donatore */
+.donor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-top: 120px;
+  width: 100%;
+}
+.donor-title {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 18px;
+}
+.donor-title h2 {
+  margin-left: 60px;
+}
+.donor-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  width: 100%;
+  max-width: 600px;
+  justify-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px; /* aggiunge spazio sotto le ultime immagini */
+}
+.donor-images img {
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: transform 0.25s ease;
+}
+.donor-images img:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.donor-label-top, .donor-label-bottom {
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  margin: 6px 0;
+  text-align: center;
+  min-height: 1.2em;
+  letter-spacing: 1px;
+}
+.donor-label-top {
+  font-weight: bold;
+}
+.donor-label-bottom {
+  font-style: italic;
+}
   </style>
 </head>
 <body>
 
   <div class="red-line"></div>
 
-  <!-- Schermata HOME -->
-  <div id="home" class="screen active">
-    <div class="side-text">
-      <span class="auto-link">Auto Donatori</span> &gt;
-      
-    </div>
+ <div id="home" class="screen active">
 
-    <img class="center-logo" src="logo.png" alt="Logo Scuderia Parioli">
+  <img class="center-logo" src="logo.png" alt="Logo Scuderia Parioli">
+
+  <!-- TITOLO SOTTO IL LOGO -->
+  <div class="side-text">
+    <span class="auto-link">Auto Donatori</span>
+  </div>
+
+  <!-- …il resto della pagina… -->
+
+    
 
     <div class="images-wrapper">
       <div class="soldi-glow"></div>
@@ -280,24 +1438,77 @@
       </div>
     </div>
   </div>
+<!-- Sezione Pacchetto Donatore -->
+<div class="donor-section">
+  <div class="donor-title" style="width:100%;text-align:center;">
+    <h2 style="color:#ffffff; font-family:'Courier New', Courier, monospace; font-size:2.2rem; margin:0 0 30px 0;">Pack Donatori</h2>
+  </div>
+  <div class="donor-images">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 5€</span>
+      <img src="bronzo.png" alt="Pacchetto 1">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco 
+</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 10€</span>
+      <img src="bronzo.png" alt="Pacchetto 2">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 15€</span>
+      <img src="argento.png" alt="Pacchetto 3">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 20€</span>
+      <img src="argento.png" alt="Pacchetto 4">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 30€</span>
+      <img src="oro.png" alt="Pacchetto 5">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 40€</span>
+      <img src="oro.png" alt="Pacchetto 6">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 50€</span>
+      <img src="platino.png" alt="Pacchetto 7">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <span class="donor-label-top">Pacchetto 60€</span>
+      <img src="platino.png" alt="Pacchetto 8">
+      <span class="donor-label-bottom">Acquistando questo pachetto otterai 50.000€ in gioco </span>
+    </div>
+  </div>
+</div>
 
 <footer>
-  <div class="footer-text" id="footerText">
+  <div class="footer-text">
     Nova Roma RP © 2025 – Tutti i diritti riservati
   </div>
-  <div class="footer-red-line" id="footerRedLine"></div>
-  <div class="social-icons">
-    <a href="https://discord.gg/7JtHhy4ctJ" target="_blank">
+  <div class="social-icons social-footer">
+    <a href="https://discord.gg/7JtHhy4ctJ" target="_blank" title="Discord">
       <i class="fab fa-discord"></i>
     </a>
-    <a href="https://www.instagram.com/novaromaroleplay?igsh=ZngzZGZqNHM1Mmky" target="_blank">
+    <a href="https://www.instagram.com/novaromaroleplay?igsh=ZngzZGZqNHM1Mmky" target="_blank" title="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-    <a href="https://www.youtube.com/@NovaRomaRP" target="_blank">
+    <a href="https://www.youtube.com/@NovaRomaRP" target="_blank" title="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
   </div>
-
+  <div class="paypal-logo">
+  <a href="https://www.paypal.com/donate/?hosted_button_id=BDXANQBT34GZ8" target="_blank">
+    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="Dona con PayPal">
+  </a>
+</div>
+  <div class="footer-red-line"></div>
 </footer>
 
 <!-- Font Awesome per le icone -->
@@ -305,6 +1516,7 @@
 
 <!-- Font Awesome per le icone -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <script>
 // Effetto parallax per la scritta e la linea rossa nel footer
 window.addEventListener('scroll', function() {
@@ -320,13 +1532,6 @@ window.addEventListener('scroll', function() {
   }
 });
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
